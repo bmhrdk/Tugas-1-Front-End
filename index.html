@@ -1,0 +1,49 @@
+<html>
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+            const app = document.getElementById("app");
+        
+            function Header({title}){
+                return (
+                    <header>
+                        <h1>Hello, my name is {title ? title : "Bagas"} </h1>
+                    </header>
+                );
+            }
+
+            function Footer(){ 
+                return <div>Copyright @2023</div>
+            }
+
+            function HomePage() {
+                const names = ['Bagas', 'Mahardika'];
+
+                const [likes, setLikes] = React.useState(0);
+
+                function handleClick(){
+                    setLikes(likes + 1);
+                }
+
+                return(
+                    <div>
+                        <Header title = "Bagas Mahardika" />
+                        <ul>
+                            {names.map((name) => (
+                                <li key = {name} > {name}</li>
+                            ))}
+                        </ul>
+                        <button onClick={handleClick}>Likes ({likes})</button>
+                        <Footer />
+                  </div>
+                );
+            }  
+
+            ReactDOM.render(<HomePage />, app);
+        </script>
+</body>
+
+</html>
